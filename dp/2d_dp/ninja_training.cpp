@@ -74,8 +74,10 @@ class Solution{
             for(int last = 0; last < 4; last++){
                 dp[day][last] = 0; 
                 for(int task = 0; task <= 2; task++){
-                    int activity = matrix[day][task] + dp[day - 1][ task]; 
-                    dp[day][task] = max(dp[day][last], activity);
+                    if(task != last){
+                        int activity = matrix[day][task] + dp[day - 1][ task]; 
+                        dp[day][task] = max(dp[day][last], activity);
+                    }
                 }
 
             }
